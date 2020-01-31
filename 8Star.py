@@ -57,10 +57,12 @@ def a_star(tree, start, end):
             children.append(child)
 
         if index = 1:
-            children.append([0,1,2,3,4,5,6,7,8]
-            children.append([1,2,0,3,4,5,6,7,8]
-            children.append([1,4,2,3,0,5,6,7,8]
+           child = copy.deepcopy(current_node)
+           current_node.node_position[1], current_node.node_position[0] = child.node_position[0], child.node_position[1]
+           children.append(child)
 
+           child
+           
         if index = 2:
                             
                 

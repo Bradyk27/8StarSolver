@@ -1,7 +1,7 @@
 class Node():
     def __init__(self, parent_node = None, node_position = None):
         self.parent_node = parent_node
-        self.node_poosition = node_position
+        self.node_position = node_position
 
         self.distance = 0
         self.heuristic = 0
@@ -43,7 +43,27 @@ def a_star(tree, start, end):
 
 
         children = []
-        #Generation of children function based on how exactly I code the A* maze?
+        for index, number in current_node.node_position:
+            if number == 0:
+                blank_index = index
+
+        if index = 0: #Logic here is sound, test it. Also, memory management?
+            child = copy.deepcopy(current_node)
+            current_node.node_position[0], current_node.node_position[1] = child.node_position[1], child.node_position[0]
+            children.append(child)
+
+            child = copy.deepcopy(current_node) #Replicate this for all applicable nodes. Children will ALWAYS be +- 1 or +- 3
+            current_node.node_position[0], current_node.node_position[3] = child.node_position[3], child.node_position[0]
+            children.append(child)
+
+        if index = 1:
+            children.append([0,1,2,3,4,5,6,7,8]
+            children.append([1,2,0,3,4,5,6,7,8]
+            children.append([1,4,2,3,0,5,6,7,8]
+
+        if index = 2:
+                            
+                
 
         for child in children:
 
@@ -66,8 +86,8 @@ def a_star(tree, start, end):
 def main():
     eight_puzzle = []
 
-    start = None
-    end = Noness
+    start = [1,2,3,4,5,6,7,8]
+    end = [1,2,3,4,5,6,7,8,0]
     path = a_star(eight_puzzle, start, end)
     print(path)
 

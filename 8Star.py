@@ -12,66 +12,65 @@ class Node():
         return self.position = other.position
 
 
-    def a_star(tree, start, end):
+def a_star(tree, start, end):
         
-        start_node = Node(None, start)
-        end_node = Node(None, end)
+    start_node = Node(None, start)
+    end_node = Node(None, end)
 
-        open_list = []
-        closed_list = []
+    open_list = []
+    closed_list = []
 
-        open_list.append(start_node)
+    open_list.append(start_node)
 
-        while len(open_list) > 0:
-            current_node = open_list[0]
-            current_index = 0
+    while len(open_list) > 0:
+        current_node = open_list[0]
+        current_index = 0
 
-            for index, item in enumerate(open_list):
-                if item.f < current_node.f:
-                    current_node = item
-                    current_index = index
+        for index, item in enumerate(open_list):
+            if item.f < current_node.f:
+                current_node = item
+                current_index = index
+        closed_list.append(open_list.pop(current_index))
 
-            closed_list.append(open_list.pop(current_index))
+        if current_node = end_node:
+            path = []
+            current = current_node
 
-            if current_node = end_node:
-                path = []
-                current = current_node
-
-                while current is not None:
-                    path.append(current.node_position)
-                    current = current.parent
-                return path [::1]
-
-
-            children = []
-            #Generation of children function based on how exactly I code the A* maze?
-
-            for child in children:
-
-                for closed_child in closed_list:
-                    if child == closed_child:
-                        continue
-
-                child.distance = current_node.distance + 1
-                child.heuristic = current_node.heuristic #Draw up a heuristic algorithm
-                child.total_cost = child.distance + child.heuristic
-
-                for open_node in open_list:
-                    if child == open_node and child.distance > open_node.distance:
-                        continue
-
-                open_list.append(child)
+            while current is not None:
+                path.append(current.node_position)
+                current = current.parent
+            return path [::1]
 
 
+        children = []
+        #Generation of children function based on how exactly I code the A* maze?
 
-            def main():
-                eight_puzzle = []
+        for child in children:
 
-                start = None
-                end = None
+            for closed_child in closed_list:
+                if child == closed_child:
+                    continue
 
-                path = a_star(eight_puzzle, start, end)
-                print(path)
+            child.distance = current_node.distance + 1
+            child.heuristic = current_node.heuristic #Draw up a heuristic algorithm
+            child.total_cost = child.distance + child.heuristic
+
+            for open_node in open_list:
+                if child == open_node and child.distance > open_node.distance:
+                    continue
+
+            open_list.append(child)
 
 
-        main()
+
+def main():
+    eight_puzzle = []
+
+    start = None
+    end = Noness
+    path = a_star(eight_puzzle, start, end)
+    print(path)
+
+
+
+main()
